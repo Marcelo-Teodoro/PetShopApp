@@ -107,11 +107,21 @@ public class CadastroBanhoView extends javax.swing.JDialog {
         jFormattedTextField4 = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
 
         jLabel8.setText("Dono ");
 
         cbDono.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dono 1", "Dono 2", "Dono 3", "Dono 4" }));
         cbDono.setFocusable(false);
+        cbDono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cbDonoFocusGained(evt);
+            }
+        });
 
         btnAddDono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
         btnAddDono.setFocusPainted(false);
@@ -576,6 +586,14 @@ public class CadastroBanhoView extends javax.swing.JDialog {
         CadastroTipoView ctv = new CadastroTipoView(null, true);
         ctv.setVisible(true);
     }//GEN-LAST:event_btnAddDono3ActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+        
+    }//GEN-LAST:event_formFocusGained
+
+    private void cbDonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbDonoFocusGained
+        System.out.println("focus gained");
+    }//GEN-LAST:event_cbDonoFocusGained
 
     /**
      * @param args the command line arguments

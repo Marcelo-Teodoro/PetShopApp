@@ -27,7 +27,18 @@ public class CadastroClienteView extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         //DefaultComboBoxModel dCBcidadeModel = (DefaultComboBoxModel) cbCidade.getModel();
-        //dCBcidadeModel.toString().format("Nome", cbCidade.getSelectedItem());
+        //dCBcidadeModel.toString().format("Nome", cbCidade.getSelectedItem());        
+    }
+    
+    public void clearAll(){
+        txtNome.setText("");
+        txtEmail.setText("");
+        ftxtTelefone.setText("");
+        ftxtCelular.setText("");
+        txtRua.setText("");
+        ftxtNumero.setText("");
+        txtBairro.setText("");
+        cbCidade.setSelectedIndex(0);
         
     }
 
@@ -226,9 +237,8 @@ public class CadastroClienteView extends javax.swing.JDialog {
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-
+    
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
         c.setNome(txtNome.getText());
         c.setEmail(txtEmail.getText());
         c.setTelefone(ftxtTelefone.getText());
