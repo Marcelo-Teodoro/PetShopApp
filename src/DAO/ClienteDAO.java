@@ -38,8 +38,8 @@ public class ClienteDAO {
 
                 sttm.setString(1, cliente.getNome());
                 sttm.setString(2, cliente.getEmail());
-                sttm.setInt(3, Integer.parseInt(cliente.getTelefone()));
-                sttm.setInt(4, Integer.parseInt(cliente.getCelular()));
+                sttm.setString(3, cliente.getTelefone().replaceAll("[^0-9]", ""));
+                sttm.setString(4, cliente.getCelular().replaceAll("[^0-9]", ""));
                 sttm.setString(5, cliente.getRua());
                 sttm.setInt(6, cliente.getNumero());
                 sttm.setString(7, cliente.getBairro());
@@ -51,8 +51,8 @@ public class ClienteDAO {
 
                 sttm.setString(1, cliente.getNome());
                 sttm.setString(2, cliente.getEmail());
-                sttm.setInt(3, Integer.parseInt(cliente.getTelefone()));
-                sttm.setInt(4, Integer.parseInt(cliente.getCelular()));
+                sttm.setString(3, cliente.getTelefone().replaceAll("[^0-9]", ""));
+                sttm.setString(4, cliente.getCelular().replaceAll("[^0-9]", ""));
                 sttm.setString(5, cliente.getRua());
                 sttm.setInt(6, cliente.getNumero());
                 sttm.setString(7, cliente.getBairro());
@@ -88,8 +88,8 @@ public class ClienteDAO {
                 cliente.setIdCliente(rs.getInt("idcliente"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setEmail(rs.getString("email"));
-                cliente.setTelefone(String.valueOf(rs.getInt("telefone")));
-                cliente.setCelular(String.valueOf(rs.getInt("celular")));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setCelular(rs.getString("celular"));
                 cliente.setRua(rs.getString("rua"));
                 cliente.setNumero(rs.getInt("numero"));
                 cliente.setBairro(rs.getString("bairro"));

@@ -243,8 +243,8 @@ public class CadastroClienteView extends javax.swing.JDialog {
         
         c.setNome(txtNome.getText());
         c.setEmail(txtEmail.getText());
-        c.setTelefone(ftxtTelefone.getText().replaceAll("[^0-9]", ""));
-        c.setCelular(ftxtCelular.getText().replaceAll("[^0-9]", ""));
+        c.setTelefone(ftxtTelefone.getText());
+        c.setCelular(ftxtCelular.getText());
         c.setRua(txtRua.getText());
         c.setNumero(Integer.parseInt(ftxtNumero.getText()));
         c.setBairro(txtBairro.getText());
