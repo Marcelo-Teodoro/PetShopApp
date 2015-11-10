@@ -181,4 +181,29 @@ public class CadastroTipoView extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txtNovoTipo;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton getBtnSalvar() {
+        return btnSalvar;
+    }
+
+    public void setBtnSalvar(javax.swing.JButton btnSalvar) {
+        this.btnSalvar = btnSalvar;
+    }
+
+    public javax.swing.JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public void setBtnVoltar(javax.swing.JButton btnVoltar) {
+        this.btnVoltar = btnVoltar;
+    }
+
+    public javax.swing.JTextField getTxtNovoTipo() {
+        return txtNovoTipo;
+    }
+
+    public void setTxtNovoTipo(javax.swing.JTextField txtNovoTipo) {
+        this.txtNovoTipo = txtNovoTipo;
+    }
+    
 }

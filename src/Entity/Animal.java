@@ -3,16 +3,17 @@ package Entity;
 public class Animal {
     
     private Integer idAnimal;
+    private Integer idCliente;
     private String nome;
     private String raca;
-    private Character genero;
+    private String genero;
     private String tipo;
     private String observacoes;
 
     public Animal() {
     }
 
-    public Animal(Integer idAnimal, String nome, String raca, Character genero, String tipo, String observacoes) {
+    public Animal(Integer idAnimal, String nome, String raca, String genero, String tipo, String observacoes) {
         this.idAnimal = idAnimal;
         this.nome = nome;
         this.raca = raca;
@@ -53,11 +54,11 @@ public class Animal {
         this.raca = raca;
     }
 
-    public Character getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(Character genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -76,6 +77,14 @@ public class Animal {
                "Genero " + genero + "\n"+
                "Tipo " + tipo + "\n"+
                "Observações " + observacoes;
+    }
+
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
     
     

@@ -5,9 +5,14 @@
  */
 package prototipos;
 
+import Entity.Animal;
 import Entity.Cliente;
+import dao.AnimalDAO;
 import dao.ClienteDAO;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -19,44 +24,56 @@ public class CadastroAnimalView extends javax.swing.JDialog {
     /**
      * Creates new form CadastroAnimalView
      */
-    
     ArrayList<Cliente> clienteList = new ArrayList();
     ClienteDAO cd = new ClienteDAO();
+    Cliente cliente = new Cliente();
     
     public CadastroAnimalView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-      atualizarListaCliente();
-      atualizarDadosCliente();
+        atualizarListaCliente();
+        atualizarDadosCliente();
     }
-    
-    public void atualizarListaCliente(){
+
+    public void atualizarListaCliente() {
         clienteList.clear();
         clienteList = cd.listar();
         cbDono.removeAllItems();
-        
+
         DefaultComboBoxModel clienteCBModel = (DefaultComboBoxModel) cbDono.getModel();
-        
+
         for (int i = 0; i < clienteList.size(); i++) {
             clienteCBModel.addElement(clienteList.get(i).getNome());
-        }        
-        
+        }
+
     }
-    
-    public void atualizarDadosCliente(){
-        if (cbDono.getSelectedIndex()!= -1){
-        Cliente cliente = clienteList.get(cbDono.getSelectedIndex());
-        txtNomeDono.setText(cliente.getNome());
-        txtEmail.setText(cliente.getEmail());
-        ftxtTelefone.setText(cliente.getTelefone());
-        ftxtCelular.setText(cliente.getCelular());
-        txtRua.setText(cliente.getRua());
-        ftxtNumero.setValue(cliente.getNumero());
-        txtBairro.setText(cliente.getBairro());
-        //cbCidade.setSelectedItem(cliente.getCidade());
-      }
+
+    public void atualizarDadosCliente() {
+        if (cbDono.getSelectedIndex() != -1) {
+            cliente = clienteList.get(cbDono.getSelectedIndex());
+            txtNomeDono.setText(cliente.getNome());
+            txtEmail.setText(cliente.getEmail());
+            ftxtTelefone.setText(cliente.getTelefone());
+            ftxtCelular.setText(cliente.getCelular());
+            txtRua.setText(cliente.getRua());
+            ftxtNumero.setValue(cliente.getNumero());
+            txtBairro.setText(cliente.getBairro());
+            //cbCidade.setSelectedItem(cliente.getCidade());
+        }
     }
-    
+
+    public String generoAnimal(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+
+        return null;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -93,7 +110,7 @@ public class CadastroAnimalView extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaObservacao = new javax.swing.JTextArea();
         btnAddDono1 = new javax.swing.JButton();
-        cbRaca1 = new javax.swing.JComboBox();
+        cbTipo = new javax.swing.JComboBox();
         btnAddDono2 = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -103,6 +120,11 @@ public class CadastroAnimalView extends javax.swing.JDialog {
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Save.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Back.png"))); // NOI18N
         btnVoltar.setText("Voltar");
@@ -289,8 +311,8 @@ public class CadastroAnimalView extends javax.swing.JDialog {
             }
         });
 
-        cbRaca1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cão", "Gato" }));
-        cbRaca1.setRequestFocusEnabled(false);
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cão", "Gato" }));
+        cbTipo.setRequestFocusEnabled(false);
 
         btnAddDono2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
         btnAddDono2.addActionListener(new java.awt.event.ActionListener() {
@@ -332,7 +354,7 @@ public class CadastroAnimalView extends javax.swing.JDialog {
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbRaca, 0, 83, Short.MAX_VALUE)
-                            .addComponent(cbRaca1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAddDono2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -356,7 +378,7 @@ public class CadastroAnimalView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAddDono2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(cbRaca1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel10)
                         .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,13 +443,13 @@ public class CadastroAnimalView extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnAddDonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDonoActionPerformed
-        CadastroClienteView ccv  = new CadastroClienteView(null, true);
+        CadastroClienteView ccv = new CadastroClienteView(null, true);
         ccv.setVisible(true);
     }//GEN-LAST:event_btnAddDonoActionPerformed
 
     private void btnAddDono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDono1ActionPerformed
-       CadastroRacaView crv = new CadastroRacaView(null, true);
-       crv.setVisible(true);
+        CadastroRacaView crv = new CadastroRacaView(null, true);
+        crv.setVisible(true);
     }//GEN-LAST:event_btnAddDono1ActionPerformed
 
     private void btnAddDono2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDono2ActionPerformed
@@ -450,6 +472,18 @@ public class CadastroAnimalView extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbDonoActionPerformed
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        Animal animal = new Animal();
+        AnimalDAO ad = new AnimalDAO();
+        animal.setIdCliente(cliente.getIdCliente());
+        animal.setNome(txtNomeAnimal.getText());
+        animal.setRaca(cbRaca.getSelectedItem().toString());
+        animal.setGenero(generoAnimal(bgGenero));
+        animal.setTipo(cbTipo.getSelectedItem().toString());
+        animal.setObservacoes(txtaObservacao.getText());
+        ad.salvar(animal);
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -464,16 +498,21 @@ public class CadastroAnimalView extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroAnimalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAnimalView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroAnimalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAnimalView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroAnimalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAnimalView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroAnimalView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroAnimalView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -502,7 +541,7 @@ public class CadastroAnimalView extends javax.swing.JDialog {
     private javax.swing.JComboBox cbCidade;
     private javax.swing.JComboBox cbDono;
     private javax.swing.JComboBox cbRaca;
-    private javax.swing.JComboBox cbRaca1;
+    private javax.swing.JComboBox cbTipo;
     private javax.swing.JFormattedTextField ftxtCelular;
     private javax.swing.JFormattedTextField ftxtNumero;
     private javax.swing.JFormattedTextField ftxtTelefone;

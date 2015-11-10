@@ -599,6 +599,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeAnimal">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
@@ -612,6 +615,7 @@
                 <StringItem index="0" value="Poodle"/>
               </StringArray>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -638,6 +642,7 @@
                     <TitledBorder title="Observa&#xe7;&#xf5;es"/>
                   </Border>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -647,6 +652,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones/buttons/Create.png"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddDono2ActionPerformed"/>
@@ -660,6 +666,7 @@
                 <StringItem index="1" value="Gato"/>
               </StringArray>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
         </Component>
@@ -668,6 +675,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones/buttons/Create.png"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddDono3ActionPerformed"/>
@@ -679,6 +687,7 @@
               <ComponentRef name="bgGenero"/>
             </Property>
             <Property name="text" type="java.lang.String" value="F"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton2">
@@ -687,6 +696,7 @@
               <ComponentRef name="bgGenero"/>
             </Property>
             <Property name="text" type="java.lang.String" value="M"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">

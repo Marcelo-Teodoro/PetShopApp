@@ -181,4 +181,29 @@ public class CadastroRacaView extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField txtNovaRaca;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton getBtnSalvar() {
+        return btnSalvar;
+    }
+
+    public void setBtnSalvar(javax.swing.JButton btnSalvar) {
+        this.btnSalvar = btnSalvar;
+    }
+
+    public javax.swing.JButton getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public void setBtnVoltar(javax.swing.JButton btnVoltar) {
+        this.btnVoltar = btnVoltar;
+    }
+
+    public javax.swing.JTextField getTxtNovaRaca() {
+        return txtNovaRaca;
+    }
+
+    public void setTxtNovaRaca(javax.swing.JTextField txtNovaRaca) {
+        this.txtNovaRaca = txtNovaRaca;
+    }
+
 }

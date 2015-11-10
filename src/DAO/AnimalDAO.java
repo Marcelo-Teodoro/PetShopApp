@@ -1,5 +1,6 @@
 package dao;
 
+import Entity.Animal;
 import Entity.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,48 +18,44 @@ import javax.swing.table.TableModel;
  *
  * @author Ederley Carvalho
  */
-public class ClienteDAO {
+public class AnimalDAO {
 
     Connection conecta = null;
     ResultSet rs = null;
     PreparedStatement sttm = null;
     public static ResultSet rsST;
 
-    public void salvar(Cliente cliente) {
+    public void salvar(Animal animal) {
 
-        cliente.setIdCliente(cliente.getIdCliente());
+        animal.setIdAnimal(animal.getIdAnimal());
         try {
             conecta = DAO.ConnectionManager.getConnection();
             
-            String SQL_INSERT = "insert into cliente(nome, email, telefone, celular, rua, numero, bairro, cidade) values (?,?,?,?,?,?,?,?)";
-            String SQL_UPDATE = "update cliente set nome = ?, email = ?, telefone = ?, celular = ?, rua = ?, numero = ?, bairo = ? , cidade = ? where idcliente = ?";
+            String SQL_INSERT = "insert into animal(idcliente, nome, raca, genero, tipo, observacao) values (?,?,?,?,?,?)";
+            String SQL_UPDATE = "update animal set idcliente = ?, nome = ?, raca = ?, genero = ?, tipo = ?, observacao = ?  where idanimal = ?";
 
-            if (cliente.getIdCliente() == null || cliente.getIdCliente() == 0) {
+            if (animal.getIdAnimal() == null || animal.getIdAnimal() == 0) {
                 sttm = conecta.prepareStatement(SQL_INSERT);
 
-                sttm.setString(1, cliente.getNome());
-                sttm.setString(2, cliente.getEmail());
-                sttm.setString(3, cliente.getTelefone().replaceAll("[^0-9]", ""));
-                sttm.setString(4, cliente.getCelular().replaceAll("[^0-9]", ""));
-                sttm.setString(5, cliente.getRua());
-                sttm.setInt(6, cliente.getNumero());
-                sttm.setString(7, cliente.getBairro());
-                sttm.setString(8, cliente.getCidade());
+                sttm.setInt(1, animal.getIdCliente());
+                sttm.setString(2, animal.getNome());
+                sttm.setString(3, animal.getRaca());
+                sttm.setString(4, animal.getGenero());
+                sttm.setString(5, animal.getTipo());
+                sttm.setString(6, animal.getObservacoes());
 
                 JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
             } else {
                 sttm = conecta.prepareStatement(SQL_UPDATE);
 
-                sttm.setString(1, cliente.getNome());
-                sttm.setString(2, cliente.getEmail());
-                sttm.setString(3, cliente.getTelefone().replaceAll("[^0-9]", ""));
-                sttm.setString(4, cliente.getCelular().replaceAll("[^0-9]", ""));
-                sttm.setString(5, cliente.getRua());
-                sttm.setInt(6, cliente.getNumero());
-                sttm.setString(7, cliente.getBairro());
-                sttm.setString(8, cliente.getCidade());
+                sttm.setInt(1, animal.getIdCliente());
+                sttm.setString(2, animal.getNome());
+                sttm.setString(3, animal.getRaca());
+                sttm.setString(4, animal.getGenero());
+                sttm.setString(5, animal.getTipo());
+                sttm.setString(6, animal.getObservacoes());
 
-                sttm.setInt(9, cliente.getIdCliente());
+                sttm.setInt(7, animal.getIdAnimal());
                 JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
             }
             sttm.executeUpdate();
@@ -69,12 +66,12 @@ public class ClienteDAO {
 
     }
 
-    public ArrayList<Cliente> listar() {
+    public ArrayList<Animal> listar() {
 
-        ArrayList<Cliente> lista = new ArrayList<Cliente>();
+        ArrayList<Animal> lista = new ArrayList<Animal>();
 
         try {
-            String QUERY_DETALHE = "select idcliente, nome, email, telefone, celular, rua, numero, bairro, cidade from cliente order by idCliente";
+            String QUERY_DETALHE = "select idanimal, idcliente, nome, raca, genero, tipo, observacao from animal order by nome ASC";
 
             conecta = DAO.ConnectionManager.getConnection();
 
@@ -84,18 +81,16 @@ public class ClienteDAO {
             rs = sttm.executeQuery();
 
             while (rs.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setIdCliente(rs.getInt("idcliente"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setEmail(rs.getString("email"));
-                cliente.setTelefone(rs.getString("telefone"));
-                cliente.setCelular(rs.getString("celular"));
-                cliente.setRua(rs.getString("rua"));
-                cliente.setNumero(rs.getInt("numero"));
-                cliente.setBairro(rs.getString("bairro"));
-                cliente.setCidade(rs.getString("cidade"));
-                lista.add(cliente);
-                System.out.println(cliente.getNome());
+                Animal animal = new Animal();
+                animal.setIdAnimal(rs.getInt("idanimal"));
+                animal.setIdCliente(rs.getInt("idcliente"));
+                animal.setNome(rs.getString("nome"));
+                animal.setRaca(rs.getString("raca"));
+                animal.setGenero(rs.getString("genero"));
+                animal.setTipo(rs.getString("tipo"));
+                animal.setObservacoes(rs.getString("observacao"));
+                lista.add(animal);
+                System.out.println(animal.getNome());
             }
             //conecta.close();
 

@@ -339,9 +339,12 @@ public class CadastroBanhoView extends javax.swing.JDialog {
 
         jLabel9.setText("Nome :");
 
+        txtNomeAnimal.setEnabled(false);
+
         jLabel15.setText("Raça :");
 
         cbRaca.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Poodle" }));
+        cbRaca.setEnabled(false);
         cbRaca.setRequestFocusEnabled(false);
 
         jLabel10.setText("Tipo :");
@@ -351,9 +354,11 @@ public class CadastroBanhoView extends javax.swing.JDialog {
         txtaObservacao.setRows(1);
         txtaObservacao.setTabSize(1);
         txtaObservacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações"));
+        txtaObservacao.setEnabled(false);
         jScrollPane1.setViewportView(txtaObservacao);
 
         btnAddDono2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
+        btnAddDono2.setEnabled(false);
         btnAddDono2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddDono2ActionPerformed(evt);
@@ -361,9 +366,11 @@ public class CadastroBanhoView extends javax.swing.JDialog {
         });
 
         cbRaca1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cão", "Gato" }));
+        cbRaca1.setEnabled(false);
         cbRaca1.setRequestFocusEnabled(false);
 
         btnAddDono3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
+        btnAddDono3.setEnabled(false);
         btnAddDono3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddDono3ActionPerformed(evt);
@@ -372,9 +379,11 @@ public class CadastroBanhoView extends javax.swing.JDialog {
 
         bgGenero.add(jRadioButton1);
         jRadioButton1.setText("F");
+        jRadioButton1.setEnabled(false);
 
         bgGenero.add(jRadioButton2);
         jRadioButton2.setText("M");
+        jRadioButton2.setEnabled(false);
 
         jLabel13.setText("Gênero :");
 
