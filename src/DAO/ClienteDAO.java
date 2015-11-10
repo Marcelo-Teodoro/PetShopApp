@@ -95,7 +95,7 @@ public class ClienteDAO {
                 cliente.setBairro(rs.getString("bairro"));
                 cliente.setCidade(rs.getString("cidade"));
                 lista.add(cliente);
-                System.out.println(cliente.getNome());
+                //System.out.println(cliente.getNome());
             }
             //conecta.close();
 
