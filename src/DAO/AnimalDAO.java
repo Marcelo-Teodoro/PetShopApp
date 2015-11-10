@@ -68,7 +68,7 @@ public class AnimalDAO {
 
     public ArrayList<Animal> listar() {
 
-        ArrayList<Animal> lista = new ArrayList<Animal>();
+        ArrayList<Animal> lista = new ArrayList();
 
         try {
             String QUERY_DETALHE = "select idanimal, idcliente, nome, raca, genero, tipo, observacao from animal order by nome ASC";
@@ -78,6 +78,44 @@ public class AnimalDAO {
             ResultSet rs = null;
 
             sttm = conecta.prepareStatement(QUERY_DETALHE);
+            
+            rs = sttm.executeQuery();
+
+            while (rs.next()) {
+                Animal animal = new Animal();
+                animal.setIdAnimal(rs.getInt("idanimal"));
+                animal.setIdCliente(rs.getInt("idcliente"));
+                animal.setNome(rs.getString("nome"));
+                animal.setRaca(rs.getString("raca"));
+                animal.setGenero(rs.getString("genero"));
+                animal.setTipo(rs.getString("tipo"));
+                animal.setObservacoes(rs.getString("observacao"));
+                lista.add(animal);
+                System.out.println(animal.getNome());
+            }
+            //conecta.close();
+
+        } catch (Exception ex) {
+            
+            JOptionPane.showMessageDialog(null, "erro ao listar!");
+        }
+        return lista;
+    }
+    
+    public ArrayList<Animal> listarById(Cliente cliente) {
+
+        ArrayList<Animal> lista = new ArrayList();
+
+        try {
+            String QUERY_DETALHE = "select idanimal, idcliente, nome, raca, genero, tipo, observacao from animal where idCliente = ?";
+
+            conecta = DAO.ConnectionManager.getConnection();
+
+            ResultSet rs = null;
+
+            sttm = conecta.prepareStatement(QUERY_DETALHE);
+            sttm.setInt(1, cliente.getIdCliente());
+            System.out.println(cliente.getIdCliente());
             rs = sttm.executeQuery();
 
             while (rs.next()) {

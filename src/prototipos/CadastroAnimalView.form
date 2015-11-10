@@ -143,8 +143,8 @@
                       <Component id="txtNomeDono" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtBairro" min="-2" pref="153" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtBairro" min="-2" pref="148" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cbCidade" max="32767" attributes="0"/>
@@ -388,8 +388,8 @@
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnAddDono2" pref="0" max="32767" attributes="0"/>
-                              <Component id="btnAddDono1" pref="25" max="32767" attributes="0"/>
+                              <Component id="btnAddTipo" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAddRaca" pref="25" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -407,7 +407,7 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtNomeAnimal" alignment="1" max="32767" attributes="0"/>
-                      <Component id="btnAddDono1" alignment="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnAddRaca" alignment="0" pref="0" max="32767" attributes="0"/>
                       <Component id="cbRaca" alignment="1" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -416,7 +416,7 @@
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnAddDono2" alignment="1" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnAddTipo" alignment="1" pref="0" max="32767" attributes="0"/>
                       <Component id="cbTipo" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -481,14 +481,14 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnAddDono1">
+        <Component class="javax.swing.JButton" name="btnAddRaca">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones/buttons/Create.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddDono1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddRacaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbTipo">
@@ -502,14 +502,14 @@
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAddDono2">
+        <Component class="javax.swing.JButton" name="btnAddTipo">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/icones/buttons/Create.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddDono2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddTipoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioButton1">

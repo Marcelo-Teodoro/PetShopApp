@@ -248,6 +248,7 @@ public class CadastroClienteView extends javax.swing.JDialog {
         c.setBairro(txtBairro.getText());
         c.setCidade(cbCidade.getSelectedItem().toString());
         cd.salvar(c);
+        clearAll();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuaActionPerformed

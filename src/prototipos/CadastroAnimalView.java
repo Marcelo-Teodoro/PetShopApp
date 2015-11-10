@@ -33,6 +33,7 @@ public class CadastroAnimalView extends javax.swing.JDialog {
         initComponents();
         atualizarListaCliente();
         atualizarDadosCliente();
+        cbDono.setSelectedIndex(-1);
     }
 
     public void atualizarListaCliente() {
@@ -41,15 +42,14 @@ public class CadastroAnimalView extends javax.swing.JDialog {
         cbDono.removeAllItems();
 
         DefaultComboBoxModel clienteCBModel = (DefaultComboBoxModel) cbDono.getModel();
-
         for (int i = 0; i < clienteList.size(); i++) {
             clienteCBModel.addElement(clienteList.get(i).getNome());
         }
-
+        cbDono.setSelectedIndex(-1);
     }
 
     public void atualizarDadosCliente() {
-        if (cbDono.getSelectedIndex() != -1) {
+        if ((cbDono.getSelectedIndex() != -1)) {
             cliente = clienteList.get(cbDono.getSelectedIndex());
             txtNomeDono.setText(cliente.getNome());
             txtEmail.setText(cliente.getEmail());
@@ -58,8 +58,31 @@ public class CadastroAnimalView extends javax.swing.JDialog {
             txtRua.setText(cliente.getRua());
             ftxtNumero.setValue(cliente.getNumero());
             txtBairro.setText(cliente.getBairro());
-            //cbCidade.setSelectedItem(cliente.getCidade());
+            cbCidade.setSelectedIndex(cidadeCBIndex(cliente.getCidade()));
+        }else{
+            txtNomeDono.setText("");
+            txtEmail.setText("");
+            ftxtTelefone.setText("");
+            ftxtCelular.setText("");
+            txtRua.setText("");
+            ftxtNumero.setValue(null);
+            txtBairro.setText("");
+            cbCidade.setSelectedItem(-1);
         }
+    }
+    
+    public Integer cidadeCBIndex(String cidade){
+        Integer index = -1;
+        for (int i = 0; i < cbCidade.getItemCount(); i++) {
+            if(cbCidade.getItemAt(i).toString().equals(cidade)){
+                index = i;                
+            }
+        }        
+        return index;
+    }
+    
+    public void limparCampo(){
+        
     }
 
     public String generoAnimal(ButtonGroup buttonGroup) {
@@ -109,9 +132,9 @@ public class CadastroAnimalView extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtaObservacao = new javax.swing.JTextArea();
-        btnAddDono1 = new javax.swing.JButton();
+        btnAddRaca = new javax.swing.JButton();
         cbTipo = new javax.swing.JComboBox();
-        btnAddDono2 = new javax.swing.JButton();
+        btnAddTipo = new javax.swing.JButton();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel11 = new javax.swing.JLabel();
@@ -207,8 +230,8 @@ public class CadastroAnimalView extends javax.swing.JDialog {
                     .addComponent(txtNomeDono)
                     .addComponent(txtEmail)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbCidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -304,20 +327,20 @@ public class CadastroAnimalView extends javax.swing.JDialog {
         txtaObservacao.setBorder(javax.swing.BorderFactory.createTitledBorder("Observações"));
         jScrollPane1.setViewportView(txtaObservacao);
 
-        btnAddDono1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
-        btnAddDono1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddRaca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
+        btnAddRaca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddDono1ActionPerformed(evt);
+                btnAddRacaActionPerformed(evt);
             }
         });
 
         cbTipo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Cão", "Gato" }));
         cbTipo.setRequestFocusEnabled(false);
 
-        btnAddDono2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
-        btnAddDono2.addActionListener(new java.awt.event.ActionListener() {
+        btnAddTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/buttons/Create.png"))); // NOI18N
+        btnAddTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddDono2ActionPerformed(evt);
+                btnAddTipoActionPerformed(evt);
             }
         });
 
@@ -357,8 +380,8 @@ public class CadastroAnimalView extends javax.swing.JDialog {
                             .addComponent(cbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddDono2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(btnAddDono1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, Short.MAX_VALUE)))
+                            .addComponent(btnAddTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(btnAddRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 25, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane1)))
@@ -370,14 +393,14 @@ public class CadastroAnimalView extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNomeAnimal, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAddDono1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnAddRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(cbRaca, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel9)
                         .addComponent(jLabel15)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAddDono2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(btnAddTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(cbTipo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel10)
@@ -447,23 +470,23 @@ public class CadastroAnimalView extends javax.swing.JDialog {
         ccv.setVisible(true);
     }//GEN-LAST:event_btnAddDonoActionPerformed
 
-    private void btnAddDono1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDono1ActionPerformed
+    private void btnAddRacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRacaActionPerformed
         CadastroRacaView crv = new CadastroRacaView(null, true);
         crv.setVisible(true);
-    }//GEN-LAST:event_btnAddDono1ActionPerformed
+    }//GEN-LAST:event_btnAddRacaActionPerformed
 
-    private void btnAddDono2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDono2ActionPerformed
+    private void btnAddTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTipoActionPerformed
         repaint();
         revalidate();
-    }//GEN-LAST:event_btnAddDono2ActionPerformed
+    }//GEN-LAST:event_btnAddTipoActionPerformed
 
     private void cbDonoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbDonoItemStateChanged
-        atualizarDadosCliente();
+        atualizarDadosCliente();        
     }//GEN-LAST:event_cbDonoItemStateChanged
 
     private void cbDonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbDonoMouseClicked
         atualizarListaCliente();
-        cbDono.setSelectedIndex(-1);
+        //cbDono.setSelectedIndex(-1);
         repaint();
         revalidate();
     }//GEN-LAST:event_cbDonoMouseClicked
@@ -534,8 +557,8 @@ public class CadastroAnimalView extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgGenero;
     private javax.swing.JButton btnAddDono;
-    private javax.swing.JButton btnAddDono1;
-    private javax.swing.JButton btnAddDono2;
+    private javax.swing.JButton btnAddRaca;
+    private javax.swing.JButton btnAddTipo;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox cbCidade;
